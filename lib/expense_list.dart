@@ -8,11 +8,13 @@ class ExpenseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const mainContnet = Center(child: Text('no Expense please add some !'));
-
+    
     return ListView.builder(itemCount: 
     expenses.length,
     itemBuilder: (ctx, index)=> Dismissible(
+      background: Container(color: Theme.of(context).colorScheme.error.withOpacity(0.75),
+      margin:EdgeInsets.symmetric(horizontal: 
+      Theme.of(context).cardTheme.margin!.horizontal,),),
       onDismissed: (direction){
         removeexpense(expenses[index]);
       },
