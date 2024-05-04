@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/chart.dart';
 import 'package:flutter_application_1/expense_list.dart';
 import 'package:flutter_application_1/showexpense.dart';
 import 'expense.dart';
@@ -66,7 +67,7 @@ if(_expensesdata.isNotEmpty){
         title: const Text('Expenses'),
       ),
       body: Column(children: [
-        const Text('Expenses chart'),
+        Chart(expenses: _expensesdata),
         Expanded(child: mainContent)
       ],)
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'expenses.dart';
 
 var kColorscheme = ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 29, 138, 228));
@@ -6,8 +7,7 @@ var kDarkScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: const Color.fromARGB(255, 5, 90, 125));
 void main() {
-
-  runApp( MaterialApp(
+SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((fn){ runApp( MaterialApp(
     darkTheme: ThemeData().copyWith(
       useMaterial3: true,
       colorScheme: kDarkScheme,
@@ -51,5 +51,7 @@ ThemeData().textTheme.copyWith(
     ),
 themeMode: ThemeMode.system,
 
-    home: Expenses(),),);
+    home: Expenses(),),);});
+
+ 
 } 
