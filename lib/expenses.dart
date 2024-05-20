@@ -46,6 +46,7 @@ ScaffoldMessenger.of(context).clearSnackBars();
 void _openAddExpenceOverly(){
 
 showModalBottomSheet(
+  useSafeArea: true,
   isScrollControlled: true,
   context: context, builder:(ctx)=> ShowExpense(addexpense: _addExpense));
 }
@@ -53,6 +54,7 @@ showModalBottomSheet(
 
 @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = Center(child: Text('No expenses added yet'),);
 
 if(_expensesdata.isNotEmpty){
@@ -66,10 +68,15 @@ if(_expensesdata.isNotEmpty){
         ],
         title: const Text('Expenses'),
       ),
-      body: Column(children: [
+      body: width > 600 ? Column(children: [
         Chart(expenses: _expensesdata),
         Expanded(child: mainContent)
-      ],)
+      ],):Row(
+children: [
+  Expanded(child: Chart(expenses: _expensesdata)),
+        Expanded(child: mainContent)
+],
+      )
     );
   }
 }
